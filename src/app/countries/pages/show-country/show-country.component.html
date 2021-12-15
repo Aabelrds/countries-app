@@ -1,0 +1,11 @@
+<h2 class="bg-dark text-white text-center">{{showCountry[0].name.common}}</h2>
+<hr>
+<div class="row">
+</div>
+<hr>
+<div class="row">
+  <div class="d-flex justify-content-center align-content-center w-100">
+    <app-card  [showCountry]="showCountry"></app-card>
+  </div>
+  <button class="btn btn-dark text-white" (click)="goBack()">GoBack</button>
+</div>

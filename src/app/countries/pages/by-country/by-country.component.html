@@ -1,0 +1,17 @@
+<h2>By Country</h2>
+<hr>
+<div class="row">
+  <div class="col">
+    <app-input-country (onEnter)="search($event)"></app-input-country>
+  </div>
+</div>
+<hr>
+<div *ngIf="errorSearch" class="alert alert-danger">
+  <h5>{{ country }} not found </h5>
+</div>
+<div *ngIf="!errorSearch" class="row">
+  <div class="col">
+    <app-table-countries [searchResponse]="searchResponse"></app-table-countries>
+  </div>
+  <button (click)="goBack()"></button>
+</div>

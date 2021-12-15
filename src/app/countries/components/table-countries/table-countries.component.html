@@ -1,0 +1,63 @@
+<table class="table table-hover">
+  <thead *ngIf="searchResponse" class="flex-grow-1">
+    <th>#</th>
+    <th>flag</th>
+    <th>Name</th>
+    <th>Population</th>
+    <th></th>
+  </thead>
+  <thead *ngIf="capitalResponse" class="flex-grow-1">
+    <th>#</th>
+    <th>flag</th>
+    <th>Name</th>
+    <th>Language</th>
+    <th></th>
+  </thead>
+  <thead *ngIf="regionSearch" class="flex-grow-1">
+    <th>#</th>
+    <th>flag</th>
+    <th>Name</th>
+    <th>Sub Region</th>
+    <th></th>
+  </thead>
+  <thead *ngIf="showCountry" class="flex-grow-1">
+    <th>#</th>
+    <th>flag</th>
+    <th>Name</th>
+    <th>Population</th>
+    <th></th>
+  </thead>
+  <tbody *ngIf="capitalResponse" class="flex-grow-1">
+    <tr *ngFor="let capital of capitalResponse; let i = index">
+      <td>{{i+1}}</td>
+      <td class="w-25 h-25"><img class="w-25 h-25"  [src]="capital.flags.svg" alt="{{capital.name}}"></td>
+      <td>{{capital.capital}}</td>
+      <td>{{capital.languages[0].nativeName }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="regionSearch" class="flex-grow-1">
+    <tr *ngFor="let regionSearch of regionSearch; let i = index">
+      <td>{{i+1}}</td>
+      <td class="w-25 h-25"><img class="w-25 h-25"  [src]="regionSearch.flags.png" alt="{{regionSearch.name.common}}"></td>
+      <td>{{regionSearch.name.common}}</td>
+      <td>{{regionSearch.subregion }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="searchResponse" class="flex-grow-1">
+    <tr *ngFor="let searchCountry of searchResponse; let i = index">
+      <td>{{i+1}}</td>
+      <td class="w-25 h-25"><img class="w-25 h-25"  [src]="searchCountry.flags.png" alt="{{searchCountry.name.common}}"></td>
+      <td>{{searchCountry.name.common}}</td>
+      <td>{{searchCountry.population | number }}</td>
+      <td><a [routerLink]="['/country',searchCountry.cca2]">Show</a></td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="showCountry" class="flex-grow-1">
+    <tr *ngFor="let country of showCountry; let i = index">
+      <td>{{i+1}}</td>
+      <td class="w-25 h-25"><img class="w-25 h-25"  [src]="country.flags.png" alt="{{country.name.common}}"></td>
+      <td>{{country.name.common}}</td>
+      <td>{{country.population | number }}</td>
+    </tr>
+  </tbody>
+</table>
